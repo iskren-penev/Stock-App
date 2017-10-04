@@ -13,8 +13,10 @@
 
         void EditWarehouse(WarehouseEditBindingModel model);
 
-        WarehouseDetailedViewModel GetDaDetailedViewModel(int id);
+        WarehouseDetailedViewModel GetDetailedViewModel(int id);
 
+        WarehouseAddViewModel GetAddViewModel(WarehouseAddBindingModel model);
 
+        WarehouseEditViewModel GetEditViewModel(int id);
     }
 }

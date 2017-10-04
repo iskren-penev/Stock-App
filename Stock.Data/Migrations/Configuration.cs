@@ -25,7 +25,13 @@ namespace Stock.Data.Migrations
                 var role = new IdentityRole("Admin");
                 manager.Create(role);
             }
-            
+
+            if (!context.Roles.Any(role => role.Name == "Moderator"))
+            {
+                var role = new IdentityRole("Moderator");
+                manager.Create(role);
+            }
+
 
             if (!context.Roles.Any(role => role.Name == "User"))
             {

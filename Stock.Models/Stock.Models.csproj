@@ -95,6 +95,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\Warehouse\WarehouseAddBindingModel.cs" />
+    <Compile Include="BindingModels\Warehouse\WarehouseEditBindingModel.cs" />
     <Compile Include="EntityModels\Comment.cs" />
     <Compile Include="EntityModels\Record.cs" />
     <Compile Include="EntityModels\StockEntry.cs" />
@@ -118,10 +120,12 @@
     <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\WarehouseAddViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\WarehouseDetailedViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\WarehouseEditViewModel.cs" />
+    <Compile Include="ViewModels\Warehouse\WarehouseListViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

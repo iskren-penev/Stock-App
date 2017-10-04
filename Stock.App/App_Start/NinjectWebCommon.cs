@@ -14,6 +14,8 @@ namespace Stock.App.App_Start
     using Microsoft.Owin.Security;
     using Stock.Data;
     using Stock.Data.Interfaces;
+    using Stock.Services.Implementations;
+    using Stock.Services.Interfaces;
 
 
     public static class NinjectWebCommon 
@@ -73,6 +75,7 @@ namespace Stock.App.App_Start
                 HttpContext.Current.GetOwinContext().Authentication).InRequestScope();
 
             kernel.Bind<IStockContext>().To<StockContext>();
+            kernel.Bind<IWarehouseService>().To<WarehouseService>();
         }        
     }
 }

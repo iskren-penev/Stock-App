@@ -9,14 +9,12 @@
 
     public class User : IdentityUser
     {
-        private ICollection<Warehouse> warehouses;
         private ICollection<Record> records;
         private ICollection<Comment> comments;
 
 
         public User()
         {
-            this.warehouses = new HashSet<Warehouse>();
             this.records = new HashSet<Record>();
             this.comments = new HashSet<Comment>();
         }
@@ -24,13 +22,7 @@
         [Required]
         [StringLength(50, MinimumLength = 4)]
         public string CompanyName { get; set; }
-
-        public virtual ICollection<Warehouse> Warehouses
-        {
-            get { return this.warehouses; }
-            set { this.warehouses = value; }
-        }
-
+        
         public virtual ICollection<Record> Records
         {
             get { return this.records; }

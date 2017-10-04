@@ -1,7 +1,6 @@
 ﻿namespace Stock.Models.EntityModels
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Comment
     {

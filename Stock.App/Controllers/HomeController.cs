@@ -4,23 +4,11 @@
 
     public class HomeController : Controller
     {
+        [Route]
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

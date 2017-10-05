@@ -1,5 +1,6 @@
 ﻿namespace WIT.Services.Interfaces
 {
+    using System.Collections.Generic;
     using WIT.Data.Interfaces;
     using WIT.Models.EntityModels;
 
@@ -8,5 +9,9 @@
         IWitContext Context { get; set; }
 
         User GetCurrentUser(string userId);
+
+        IEnumerable<Warehouse> GetWarehouses();
+
+        Warehouse GetWarehouseById(int id);
     }
 }

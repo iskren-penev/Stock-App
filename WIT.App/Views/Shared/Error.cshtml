@@ -2,8 +2,21 @@
 
 @{
     ViewBag.Title = "Error";
+
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger centered">Error</h1>
+<hr />
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 col-xs-12">
+        <img src="~/Content/errorstop.png" alt="error" class="img-responsive centered" />
+    </div>
+</div>
+<div class="row centered">
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+    <p>@Model.Exception.Message</p>
+</div>
+<div class="row centered">
+    @Html.ActionLink("Go back to home page.", "Index", "Home")
+</div>
 

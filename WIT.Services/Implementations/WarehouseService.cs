@@ -56,10 +56,11 @@
             Warehouse warehouse = this.GetWarehouseById(model.Id);
             warehouse.Name = model.Name;
             warehouse.Address = model.Address;
-            if (model.Capacity > warehouse.CurrentStock)
+            if (model.Capacity < warehouse.CurrentStock)
             {
-                warehouse.Capacity = model.Capacity;
+                throw new ArgumentException("The amount of stock in the warehouse cannot exceed the capacity!");
             }
+            warehouse.Capacity = model.Capacity;
 
             this.Context.SaveChanges();
         }
@@ -94,89 +95,6 @@
             WarehouseEditViewModel viewModel = Mapper.Instance.Map<WarehouseEditViewModel>(warehouse);
 
             return viewModel;
-        }
-
-        public void AddEntry(EntryAddBindingModel model, int warehouseId, string userId)
-        {
-            Warehouse warehouse = this.GetWarehouseById(warehouseId);
-            StockEntry entry = Mapper.Instance.Map<StockEntry>(model);
-            User currentUser = this.GetCurrentUser(userId);
-            entry.EntryDate = DateTime.Now;
-            entry.Warehouse = warehouse;
-
-            Record record = new Record()
-            {
-                AmountBefore = warehouse.CurrentStock,
-                Distributor = currentUser
-            };
-
-            switch (entry.EntryType)
-            {
-                case "Input":
-                    {
-                        this.InputEntry(warehouse, entry.Amount);
-                        break;
-                    }
-                case "Output":
-                    {
-                        this.OutputEntry(warehouse, entry.Amount);
-                        break;
-                    }
-            }
-            record.AmountAfter = warehouse.CurrentStock;
-            entry.Record = record;
-
-            this.Context.StockEntries.Add(entry);
-            this.Context.SaveChanges();
-
-        }
-
-        public EntryAddViewModel GetEntryAddViewModel(EntryAddBindingModel model)
-        {
-            if (model == null)
-            {
-                return null;
-            }
-            EntryAddViewModel viewModel = Mapper.Instance.Map<EntryAddViewModel>(model);
-
-            return viewModel;
-        }
-
-
-        private IEnumerable<Warehouse> GetWarehouses()
-        {
-            IEnumerable<Warehouse> warehouses = this.Context.Warehouses;
-
-            return warehouses;
-        }
-
-        private Warehouse GetWarehouseById(int id)
-        {
-            Warehouse warehouse = this.Context.Warehouses.Find(id);
-            if (warehouse == null)
-            {
-                throw new ArgumentNullException(nameof(id), "There is no Warehouse with such Id.");
-            }
-
-            return warehouse;
-        }
-
-        private void InputEntry(Warehouse warehouse, double amount)
-        {
-            if (warehouse.CurrentStock + amount > warehouse.Capacity)
-            {
-                throw new ArgumentException();
-            }
-            warehouse.CurrentStock += amount;
-        }
-
-        private void OutputEntry(Warehouse warehouse, double amount)
-        {
-            if (warehouse.CurrentStock - amount < 0)
-            {
-                throw new ArgumentException();
-            }
-            warehouse.CurrentStock -= amount;
         }
     }
 }

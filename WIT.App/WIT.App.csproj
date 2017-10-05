@@ -219,6 +219,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Extensions\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,6 +233,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\errorstop.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\warehouse-led.jpg" />
     <Content Include="favicon.ico" />
@@ -299,7 +301,9 @@
     <Content Include="Views\Warehouse\Add.cshtml" />
     <Content Include="Views\Warehouse\Edit.cshtml" />
     <Content Include="Views\Warehouse\_DisplayWarehouses.cshtml" />
-    <Content Include="Views\Warehouse\AddEntry.cshtml" />
+    <Content Include="Views\Records\AddEntry.cshtml" />
+    <Content Include="Views\Records\All.cshtml" />
+    <Content Include="Views\Records\_DisplayRecords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

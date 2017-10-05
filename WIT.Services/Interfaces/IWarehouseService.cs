@@ -19,9 +19,5 @@
         WarehouseAddViewModel GetAddViewModel(WarehouseAddBindingModel model);
 
         WarehouseEditViewModel GetEditViewModel(int id);
-
-        void AddEntry(EntryAddBindingModel model, int warehouseId, string userId);
-
-        EntryAddViewModel GetEntryAddViewModel(EntryAddBindingModel model);
     }
 }

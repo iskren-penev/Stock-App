@@ -6,7 +6,7 @@
     {
         public string EntryType { get; set; }
         
-        public double? Amount { get; set; }
+        public double Amount { get; set; }
         
         public DateTime? EntryDate { get; set; }
     }

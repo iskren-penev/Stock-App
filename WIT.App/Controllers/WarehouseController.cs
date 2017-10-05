@@ -1,5 +1,6 @@
 ﻿namespace WIT.App.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Net;
     using System.Web.Mvc;
@@ -40,7 +41,7 @@
         [HttpGet]
         [CustomAuthorize(Roles = "Admin,Moderator")]
         [Route("add")]
-        public ActionResult Add(WarehouseAddViewModel model)
+        public ActionResult Add()
         {
             return this.View(new WarehouseAddViewModel());
         }
@@ -88,8 +89,16 @@
         {
             if (this.ModelState.IsValid)
             {
-                this.service.EditWarehouse(model);
-                return this.RedirectToAction("Details", new {id = model.Id});
+                try
+                {
+                    this.service.EditWarehouse(model);
+                    return this.RedirectToAction("Details", new {id = model.Id});
+                }
+                catch (ArgumentException e)
+                {
+                    ViewBag.ReturnUrl = $"/warehouses/{model.Id}";
+                    throw new Exception(e.Message);
+                }
             }
             WarehouseEditViewModel viewModel = this.service.GetEditViewModel(model.Id);
 
@@ -110,14 +119,5 @@
 
             return this.View(viewModel);
         }
-
-        [HttpGet]
-        [CustomAuthorize(Roles = "Admin,Moderator,User")]
-        [Route("addEntry")]
-        public ActionResult AddEntry(int id)
-        {
-            return this.View();
-        }
-
     }
 }

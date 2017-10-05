@@ -30,3 +30,7 @@ textarea {
 .searchbar {
     max-width: 800px;
 }
+
+hr {
+    border-top: 1px solid #446e9b;
+}

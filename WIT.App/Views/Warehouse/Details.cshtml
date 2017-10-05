@@ -3,7 +3,6 @@
 
 @{
     ViewBag.Title = "Warehouse Details";
-    ViewBag.WarehouseId = Model.Info.Id;
 }
 
 <h2 class="centered">Warehouse Details</h2>
@@ -71,12 +70,11 @@
                 </td>
             </tr>
         }
-
     </table>
 </div>
 <div class="row">
     <p class="centered">
-        @Html.ActionLink("Add Entry", "AddEntry", new { id = Model.Info.Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Add Entry", "AddEntry", "Records", null, new { @class = "btn btn-default" }) |
         @Html.ActionLink("Edit", "Edit", new { id = Model.Info.Id }, new { @class = "btn btn-default" }) |
         @Html.ActionLink("Back to List", "All", null, new { @class = "btn btn-default" })
     </p>

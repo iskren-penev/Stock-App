@@ -1,5 +1,5 @@
-﻿@using WIT.Models.ViewModels.Record
-@model List<RecordListViewModel>
+﻿@using WIT.Models.ViewModels.User
+@model List<UserListViewModel>
 
 @{
     ViewBag.Title = "Inventory Records";
@@ -7,12 +7,12 @@
 <br />
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="centered">Inventory Records</h1>
+        <h1 class="centered">Users</h1>
     </div>
 </div>
 <br />
 <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <div class="row">
             @using (Ajax.BeginForm("Display", new AjaxOptions()
             {
@@ -36,12 +36,7 @@
             }
         </div>
     </div>
-    <div class="col-sm-2">
-       @if (User.Identity.IsAuthenticated)
-       {
-           @Html.ActionLink("Add new entry", "AddEntry", "Records", null, new {@class = "btn btn-primary btn-block"})
-       }
-    </div>
+    
 </div>
 <div class="row">
     <div id="loadingElement" hidden="hidden">
@@ -50,6 +45,6 @@
         </div>
     </div>
     <div id="searchResult">
-        @Html.Partial("_DisplayRecords", Model)
+        @Html.Partial("_DisplayUsers", Model)
     </div>
 </div>

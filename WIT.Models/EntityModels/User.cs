@@ -11,8 +11,7 @@
     {
         private ICollection<Record> records;
         private ICollection<Comment> comments;
-
-
+        
         public User()
         {
             this.records = new HashSet<Record>();

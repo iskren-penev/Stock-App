@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingModels\Record\EntryAddBindingModel.cs" />
+    <Compile Include="BindingModels\User\CommentAddBindingModel.cs" />
     <Compile Include="BindingModels\Warehouse\WarehouseAddBindingModel.cs" />
     <Compile Include="BindingModels\Warehouse\WarehouseEditBindingModel.cs" />
     <Compile Include="EntityModels\Comment.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Record\EntryAddViewModel.cs" />
     <Compile Include="ViewModels\Record\RecordListViewModel.cs" />
+    <Compile Include="ViewModels\User\UserListViewModel.cs" />
     <Compile Include="ViewModels\Warehouse\EntryListViewModel.cs" />
     <Compile Include="ViewModels\Warehouse\WarehouseAddViewModel.cs" />
     <Compile Include="ViewModels\Warehouse\WarehouseDetailedViewModel.cs" />

@@ -1,6 +1,7 @@
 ﻿namespace WIT.App.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
     using WIT.App.Extensions;
@@ -20,9 +21,20 @@
 
         [HttpGet]
         [AllowAnonymous]
+        [Route]
         public ActionResult All()
         {
-            return this.View();
+            List<RecordListViewModel> viewModels = this.service.GetRecordListViewModels();
+
+            return this.View(viewModels);
+        }
+
+        [HttpGet]
+        public PartialViewResult Display(string search)
+        {
+            List<RecordListViewModel> viewModels = this.service.GetRecordListViewModelsSearch(search);
+
+            return this.PartialView("_DisplayRecords", viewModels);
         }
 
         [HttpGet]

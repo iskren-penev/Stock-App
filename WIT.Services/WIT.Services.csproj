@@ -73,9 +73,11 @@
   <ItemGroup>
     <Compile Include="Implementations\RecordService.cs" />
     <Compile Include="Implementations\Service.cs" />
+    <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\WarehouseService.cs" />
     <Compile Include="Interfaces\IRecordService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IWarehouseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

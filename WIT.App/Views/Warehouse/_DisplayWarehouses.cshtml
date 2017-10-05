@@ -1,9 +1,7 @@
 ﻿@using WIT.Models.ViewModels.Warehouse
 @model List<WarehouseListViewModel>
-@{
-    ViewBag.WarehouseId = null;
-}
-<table class="table table-bordered table-striped" style="table-layout: fixed">
+
+<table class="table table-bordered table-striped">
     <tr >
         <th class="centered">
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
@@ -28,10 +26,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-            <td>
+            <td style="text-align: right">
                 @Html.DisplayFor(modelItem => item.CurrentStock)
             </td>
-            <td>
+            <td style="text-align: right">
                 @Html.DisplayFor(modelItem => item.Capacity)
             </td>
             <td>

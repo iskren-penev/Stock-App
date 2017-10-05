@@ -1,0 +1,56 @@
+﻿@using WIT.Models.ViewModels.User
+@model List<UserListViewModel>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Roles)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Comments)
+        </th>
+        <th class="centered">
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var role in item.Roles)
+                    {
+                        <li>@role</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    @foreach (var comment in item.Comments)
+                    {
+                        <li>@comment</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Make moderator", "MakeModerator", "User", new {userId = item.Id}, new {@class="btn btn-default"})
+                <br />
+                @Html.ActionLink("Add comment", "AddComment", "User", new { userId = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+           
+        </tr>
+    }
+</table>

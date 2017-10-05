@@ -27,17 +27,15 @@
 
         public List<WarehouseListViewModel> GetListViewModelsSearch(string search)
         {
-            List<Warehouse> warehouses = this.GetWarehouses().ToList();
+            List<WarehouseListViewModel> viewModels = this.GetListViewModels().ToList();
 
             if (!string.IsNullOrEmpty(search))
             {
-                warehouses = warehouses.Where(wh =>
-                    wh.Address.ToLower().Contains(search)
-                    || wh.Name.ToLower().Contains(search))
+                viewModels = viewModels.Where(wh =>
+                    wh.Address.ToLower().Contains(search.ToLower())
+                    || wh.Name.ToLower().Contains(search.ToLower()))
                     .ToList();
             }
-            List<WarehouseListViewModel> viewModels =
-                 Mapper.Instance.Map<List<WarehouseListViewModel>>(warehouses);
 
             return viewModels;
         }

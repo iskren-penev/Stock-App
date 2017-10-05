@@ -32,10 +32,10 @@
             <td>
                 @Html.DisplayFor(modelItem => Model.Info.Address)
             </td>
-            <td>
+            <td style="text-align: right">
                 @Html.DisplayFor(modelItem => Model.Info.CurrentStock)
             </td>
-            <td>
+            <td style="text-align: right">
                 @Html.DisplayFor(modelItem => Model.Info.Capacity)
             </td>
         </tr>
@@ -65,7 +65,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => entry.EntryType)
                 </td>
-                <td>
+                <td style="text-align: right">
                     @Html.DisplayFor(modelItem => entry.Amount)
                 </td>
             </tr>

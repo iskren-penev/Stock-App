@@ -26,10 +26,12 @@
 
         [Required]
         [Range(0, Double.MaxValue)]
+        [Display(Name = "Amount before entry")]
         public double AmountBefore { get; set; }
 
         [Required]
         [Range(0, Double.MaxValue)]
+        [Display(Name = "Amount after entry")]
         public double AmountAfter { get; set; }
     }
 }

@@ -220,6 +220,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RecordsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Extensions\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -304,6 +305,8 @@
     <Content Include="Views\Records\AddEntry.cshtml" />
     <Content Include="Views\Records\All.cshtml" />
     <Content Include="Views\Records\_DisplayRecords.cshtml" />
+    <Content Include="Views\User\All.cshtml" />
+    <Content Include="Views\User\_DisplayUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,1 +1,55 @@
-﻿
+﻿@using WIT.Models.ViewModels.Record
+@model List<RecordListViewModel>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Company)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().WarehouseName)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().EntryType)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Amount)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AmountBefore)
+        </th>
+        <th class="centered">
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AmountAfter)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WarehouseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td style="text-align: right">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td style="text-align: right">
+                @Html.DisplayFor(modelItem => item.AmountBefore)
+            </td>
+            <td style="text-align: right">
+                @Html.DisplayFor(modelItem => item.AmountAfter)
+            </td>
+        </tr>
+    }
+</table>

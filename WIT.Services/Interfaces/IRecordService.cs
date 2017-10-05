@@ -12,5 +12,9 @@
         EntryAddViewModel GetEntryAddViewModel(EntryAddBindingModel model);
 
         IEnumerable<SelectListItem> GetWarehousesSelectListItems();
+
+        List<RecordListViewModel> GetRecordListViewModels();
+
+        List<RecordListViewModel> GetRecordListViewModelsSearch(string search);
     }
 }

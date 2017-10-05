@@ -77,6 +77,29 @@
             return selectListItems;
         }
 
+        public List<RecordListViewModel> GetRecordListViewModels()
+        {
+            List<Record> records = this.GetAllRecords().ToList();
+            List<RecordListViewModel> viewModels =
+                Mapper.Instance.Map<List<RecordListViewModel>>(records);
+
+            return viewModels;
+        }
+
+        public List<RecordListViewModel> GetRecordListViewModelsSearch(string search)
+        {
+            List<RecordListViewModel> viewModels = this.GetRecordListViewModels();
+            if (!string.IsNullOrEmpty(search))
+            {
+                viewModels = viewModels.Where(vm =>
+                        vm.Company.ToLower().Contains(search.ToLower())
+                        || vm.EntryType.ToLower().Contains(search.ToLower())
+                        || vm.WarehouseName.ToLower().Contains(search.ToLower()))
+                    .ToList();
+            }
+            return viewModels;
+        }
+
         private void InputEntry(Warehouse warehouse, double amount)
         {
             if (warehouse.CurrentStock + amount > warehouse.Capacity)
@@ -93,6 +116,13 @@
                 throw new ArgumentException("The amount of stock in the warehouse cannot be less than 0!");
             }
             warehouse.CurrentStock -= amount;
+        }
+
+        private IEnumerable<Record> GetAllRecords()
+        {
+            IEnumerable<Record> records = this.Context.Records;
+
+            return records;
         }
     }
 }

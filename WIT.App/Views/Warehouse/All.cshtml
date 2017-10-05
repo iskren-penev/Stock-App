@@ -1,0 +1,55 @@
+﻿@using WIT.Models.ViewModels.Warehouse
+@model List<WarehouseListViewModel>
+
+@{
+    ViewBag.Title = "Warehouses";
+}
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="centered">Warehouses</h1>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-10">
+        <div class="row">
+            @using (Ajax.BeginForm("Display", new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                UpdateTargetId = "searchResult",
+                InsertionMode = InsertionMode.Replace,
+                LoadingElementId = "loadingElement",
+                LoadingElementDuration = 1500
+            }))
+            {
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control searchbar" name="search" placeholder="Search by name or address..." />
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <input type="submit" id="submit" value="Search" class="btn btn-success btn-block" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-2">
+        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+        {
+            @Html.ActionLink("Add Warehouse", "Add", "Warehouse", null, new { @class = "btn btn-primary btn-block" })
+        }
+    </div>
+</div>
+<div class="row">
+    <div id="loadingElement" hidden="hidden">
+        <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-success" style="width: 100%"></div>
+        </div>
+    </div>
+    <div id="searchResult">
+        @Html.Partial("_DisplayWarehouses", Model)
+    </div>
+</div>

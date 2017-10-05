@@ -1,0 +1,83 @@
+﻿@using WIT.Models.ViewModels.Warehouse
+@model WarehouseDetailedViewModel
+
+@{
+    ViewBag.Title = "Warehouse Details";
+    ViewBag.WarehouseId = Model.Info.Id;
+}
+
+<h2 class="centered">Warehouse Details</h2>
+
+<div class="row">
+    <h3 class="centered">General Info</h3>
+    <hr />
+    <table class="table table-bordered table-striped" style="table-layout: fixed">
+        <tr>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Info.Name)
+            </th>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Info.Address)
+            </th>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Info.CurrentStock)
+            </th>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Info.Capacity)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Info.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Info.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Info.CurrentStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Info.Capacity)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <h3 class="centered">Stock Entries</h3>
+    <hr />
+    <table class="table table-bordered table-striped" style="table-layout: fixed">
+        <tr>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Entries.FirstOrDefault().EntryDate)
+            </th>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Entries.FirstOrDefault().EntryType)
+            </th>
+            <th class="centered">
+                @Html.DisplayNameFor(model => model.Entries.FirstOrDefault().Amount)
+            </th>
+        </tr>
+        @foreach (var entry in Model.Entries)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => entry.EntryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => entry.EntryType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => entry.Amount)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="row">
+    <p class="centered">
+        @Html.ActionLink("Add Entry", "AddEntry", new { id = Model.Info.Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Info.Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Back to List", "All", null, new { @class = "btn btn-default" })
+    </p>
+</div>

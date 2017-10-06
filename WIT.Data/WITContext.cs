@@ -8,7 +8,7 @@ namespace WIT.Data
 
     public class WitContext : IdentityDbContext<User>, IWitContext
     {
-        public WitContext() : base("StockContext")
+        public WitContext() : base("WitContext")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WitContext, Configuration>());
 

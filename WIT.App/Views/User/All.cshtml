@@ -12,7 +12,7 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-10">
         <div class="row">
             @using (Ajax.BeginForm("Display", new AjaxOptions()
             {
@@ -36,7 +36,9 @@
             }
         </div>
     </div>
-    
+    <div class="col-sm-2">
+        @Html.ActionLink("Add comment", "AddComment", "User", null, new { @class = "btn btn-primary" })
+    </div>
 </div>
 <div class="row">
     <div id="loadingElement" hidden="hidden">

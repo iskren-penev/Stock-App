@@ -20,8 +20,9 @@
         public void AddEntry(EntryAddBindingModel model, string userId)
         {
             Warehouse warehouse = this.GetWarehouseById(int.Parse(model.WhId));
-            StockEntry entry = Mapper.Instance.Map<StockEntry>(model);
-            User currentUser = this.GetCurrentUser(userId);
+            StockEntry entry = Mapper.Instance
+                .Map<EntryAddBindingModel,StockEntry>(model);
+            User currentUser = this.GetUserById(userId);
             entry.EntryDate = DateTime.Now;
 
             Record record = new Record()
@@ -60,7 +61,8 @@
             {
                 return null;
             }
-            EntryAddViewModel viewModel = Mapper.Instance.Map<EntryAddViewModel>(model);
+            EntryAddViewModel viewModel = Mapper.Instance
+                .Map<EntryAddBindingModel,EntryAddViewModel>(model);
 
             return viewModel;
         }
@@ -80,13 +82,13 @@
         public List<RecordListViewModel> GetRecordListViewModels()
         {
             List<Record> records = this.GetAllRecords().ToList();
-            List<RecordListViewModel> viewModels =
-                Mapper.Instance.Map<List<RecordListViewModel>>(records);
+            List<RecordListViewModel> viewModels =Mapper.Instance
+                .Map<List<Record>,List<RecordListViewModel>>(records);
 
             return viewModels;
         }
 
-        public List<RecordListViewModel> GetRecordListViewModelsSearch(string search)
+        public List<RecordListViewModel> SearchRecords(string search)
         {
             List<RecordListViewModel> viewModels = this.GetRecordListViewModels();
             if (!string.IsNullOrEmpty(search))

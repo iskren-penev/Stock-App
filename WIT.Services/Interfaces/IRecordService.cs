@@ -15,6 +15,6 @@
 
         List<RecordListViewModel> GetRecordListViewModels();
 
-        List<RecordListViewModel> GetRecordListViewModelsSearch(string search);
+        List<RecordListViewModel> SearchRecords(string search);
     }
 }

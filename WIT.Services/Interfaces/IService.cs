@@ -8,7 +8,7 @@
     {
         IWitContext Context { get; set; }
 
-        User GetCurrentUser(string userId);
+        User GetUserById(string userId);
 
         IEnumerable<Warehouse> GetWarehouses();
 

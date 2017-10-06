@@ -32,7 +32,7 @@
         [HttpGet]
         public PartialViewResult Display(string search)
         {
-            List<WarehouseListViewModel> viewModels = this.service.GetListViewModelsSearch(search);
+            List<WarehouseListViewModel> viewModels = this.service.SearchWarehouses(search);
 
             return this.PartialView("_DisplayWarehouses", viewModels);
         }

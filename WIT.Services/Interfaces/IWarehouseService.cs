@@ -8,7 +8,7 @@
     {
         List<WarehouseListViewModel> GetListViewModels();
 
-        List<WarehouseListViewModel> GetListViewModelsSearch(string search);
+        List<WarehouseListViewModel> SearchWarehouses(string search);
 
         void AddWarehouse(WarehouseAddBindingModel model);
 

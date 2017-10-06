@@ -1,6 +1,5 @@
 ﻿namespace WIT.App.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
@@ -8,6 +7,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using WIT.App.Extensions;
+    using WIT.Models.BindingModels.User;
     using WIT.Models.ViewModels.User;
     using WIT.Services.Interfaces;
 
@@ -50,7 +50,7 @@
             List<UserListViewModel> viewModels = this.service.SearchUsers(search);
             this.AddRolesToViewModels(viewModels);
 
-            return this.PartialView("_DisplayUsers");
+            return this.PartialView("_DisplayUsers", viewModels);
         }
 
         [Route("makemoderator")]
@@ -62,7 +62,30 @@
         }
 
         [HttpGet]
+        [CustomAuthorize(Roles = "Admin,Moderator")]
         [Route("addComment")]
+        public ActionResult AddComment()
+        {
+            ViewBag.UserList = this.service.GetUserSelectListItems();
+            return this.View(new CommentAddViewModel());
+        }
+
+        [HttpPost]
+        [CustomAuthorize(Roles = "Admin,Moderator")]
+        [Route("addComment")]
+        public ActionResult AddComment([Bind(Include = "UserId,Content")] CommentAddBindingModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                this.service.AddComment(model);
+                return this.RedirectToAction("All");
+            }
+
+            ViewBag.UserList = this.service.GetUserSelectListItems();
+            CommentAddViewModel viewModel = this.service.GetCommentAddViewModel(model);
+
+            return this.View(viewModel);
+        }
 
         private void AddRolesToViewModels(List<UserListViewModel> models)
         {

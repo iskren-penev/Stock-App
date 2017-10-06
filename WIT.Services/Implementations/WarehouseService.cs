@@ -19,15 +19,15 @@
         public List<WarehouseListViewModel> GetListViewModels()
         {
             List<Warehouse> warehouses = this.GetWarehouses().ToList();
-            List<WarehouseListViewModel> viewModels =
-                Mapper.Instance.Map<List<WarehouseListViewModel>>(warehouses);
+            List<WarehouseListViewModel> viewModels = Mapper.Instance
+                .Map<List<Warehouse>, List<WarehouseListViewModel>>(warehouses);
 
             return viewModels;
         }
 
-        public List<WarehouseListViewModel> GetListViewModelsSearch(string search)
+        public List<WarehouseListViewModel> SearchWarehouses(string search)
         {
-            List<WarehouseListViewModel> viewModels = this.GetListViewModels().ToList();
+            List<WarehouseListViewModel> viewModels = this.GetListViewModels();
 
             if (!string.IsNullOrEmpty(search))
             {
@@ -42,7 +42,8 @@
 
         public void AddWarehouse(WarehouseAddBindingModel model)
         {
-            Warehouse warehouse = Mapper.Instance.Map<Warehouse>(model);
+            Warehouse warehouse = Mapper.Instance
+                .Map<WarehouseAddBindingModel, Warehouse>(model);
             warehouse.CurrentStock = 0;
 
             this.Context.Warehouses.Add(warehouse);
@@ -69,8 +70,10 @@
 
             WarehouseDetailedViewModel viewModel = new WarehouseDetailedViewModel()
             {
-                Info = Mapper.Instance.Map<WarehouseListViewModel>(warehouse),
-                Entries = Mapper.Instance.Map<IEnumerable<EntryListViewModel>>(warehouse.Entries)
+                Info = Mapper.Instance
+                     .Map<Warehouse,WarehouseListViewModel>(warehouse),
+                Entries = Mapper.Instance
+                     .Map<IEnumerable<StockEntry>,IEnumerable<EntryListViewModel>>(warehouse.Entries)
             };
 
             return viewModel;
@@ -82,7 +85,8 @@
             {
                 return null;
             }
-            WarehouseAddViewModel viewModel = Mapper.Instance.Map<WarehouseAddViewModel>(model);
+            WarehouseAddViewModel viewModel = Mapper.Instance
+                .Map<WarehouseAddBindingModel,WarehouseAddViewModel>(model);
 
             return viewModel;
         }
@@ -90,7 +94,8 @@
         public WarehouseEditViewModel GetEditViewModel(int id)
         {
             Warehouse warehouse = this.GetWarehouseById(id);
-            WarehouseEditViewModel viewModel = Mapper.Instance.Map<WarehouseEditViewModel>(warehouse);
+            WarehouseEditViewModel viewModel = Mapper.Instance
+                .Map<Warehouse,WarehouseEditViewModel>(warehouse);
 
             return viewModel;
         }

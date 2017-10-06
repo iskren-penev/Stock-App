@@ -78,7 +78,7 @@ namespace WIT.App.App_Start
             kernel.Bind<IWitContext>().To<WitContext>();
             kernel.Bind<IWarehouseService>().To<WarehouseService>();
             kernel.Bind<IRecordService>().To<RecordService>();
-
+            kernel.Bind<IUserService>().To<UserService>();
         }
     }
 }

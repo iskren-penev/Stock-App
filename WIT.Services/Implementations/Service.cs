@@ -16,7 +16,7 @@
         public IWitContext Context { get; set; }
 
 
-        public User GetCurrentUser(string userId)
+        public User GetUserById(string userId)
         {
             return this.Context.Users.Find(userId);
         }

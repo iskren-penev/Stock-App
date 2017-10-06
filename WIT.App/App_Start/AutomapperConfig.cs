@@ -3,6 +3,7 @@
     using System.Linq;
     using AutoMapper;
     using WIT.Models.BindingModels.Record;
+    using WIT.Models.BindingModels.User;
     using WIT.Models.BindingModels.Warehouse;
     using WIT.Models.EntityModels;
     using WIT.Models.ViewModels.Record;
@@ -59,6 +60,10 @@
                             user.Comments.Select(c => c.Content)))
                     .ForMember(model => model.Roles, configurationExpression =>
                         configurationExpression.Ignore());
+
+                exp.CreateMap<CommentAddBindingModel, CommentAddViewModel>();
+
+                exp.CreateMap<CommentAddBindingModel, Comment>();
 
                 #endregion
             });

@@ -124,6 +124,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Record\EntryAddViewModel.cs" />
     <Compile Include="ViewModels\Record\RecordListViewModel.cs" />
+    <Compile Include="ViewModels\User\CommentAddViewModel.cs" />
     <Compile Include="ViewModels\User\UserListViewModel.cs" />
     <Compile Include="ViewModels\Warehouse\EntryListViewModel.cs" />
     <Compile Include="ViewModels\Warehouse\WarehouseAddViewModel.cs" />

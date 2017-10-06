@@ -46,11 +46,9 @@
                 </ul>
             </td>
             <td>
-                @Html.ActionLink("Make moderator", "MakeModerator", "User", new {userId = item.Id}, new {@class="btn btn-default"})
-                <br />
-                @Html.ActionLink("Add comment", "AddComment", "User", new { userId = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Make moderator", "MakeModerator", "User", new { userId = item.Id }, new { @class = "btn btn-default" })
             </td>
-           
+
         </tr>
     }
 </table>

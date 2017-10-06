@@ -4,9 +4,18 @@
         <h1>
             Unauthorized attempt!
         </h1>
-        <h2>
-            Please @Html.ActionLink("Logout", "LogOff", "Account", new { area = "" }, null) and then login with an account that has permission to view this page.
-        </h2>
+        @if (User.Identity.IsAuthenticated)
+            {
+            <h3>
+                Please @Html.ActionLink("Logout", "LogOff", "Account", new { area = "" }, null) and then login with an account that has permission to view this page.
+            </h3>
+        }
+        else
+        {
+            <h3>
+                Please @Html.ActionLink("Login", "Login", "Account", new { area = "" }, null) with an account that has permission to view this page.
+            </h3>
+        }
 
     </div>
 </div>

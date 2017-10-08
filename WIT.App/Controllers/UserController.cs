@@ -54,6 +54,7 @@
         }
 
         [Route("makemoderator")]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult MakeModerator(string userId)
         {
             this.Manager.AddToRole(userId, "Moderator");
@@ -91,7 +92,7 @@
         {
             foreach (var model in models)
             {
-                var roles = this.Manager.GetRoles(model.Id).ToList();
+                List<string> roles = this.Manager.GetRoles(model.Id).ToList();
                 this.service.SetRoleNameForModel(model, roles);
             }
         }

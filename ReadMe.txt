@@ -37,7 +37,7 @@ The administrator can add the "Moderator" role to registered users.
 ----------------------------------------------------------------------------------
 CLASS DESCRIPTION:
 ------------------MODELS
--------------------------ENTRY MODELS
+-------------------------ENTITY MODELS
 1. Warehouse: contains information about the warehouse and the stock entry operations
 	-Id
 	-Name

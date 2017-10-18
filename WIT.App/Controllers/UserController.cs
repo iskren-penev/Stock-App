@@ -73,6 +73,7 @@
 
         [HttpPost]
         [CustomAuthorize(Roles = "Admin,Moderator")]
+        [ValidateAntiForgeryToken]
         [Route("addComment")]
         public ActionResult AddComment([Bind(Include = "UserId,Content")] CommentAddBindingModel model)
         {

@@ -46,7 +46,10 @@
                 </ul>
             </td>
             <td>
-                @Html.ActionLink("Make moderator", "MakeModerator", "User", new { userId = item.Id }, new { @class = "btn btn-default" })
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Make moderator", "MakeModerator", "User", new { userId = item.Id }, new { @class = "btn btn-default" })
+                }
             </td>
 
         </tr>

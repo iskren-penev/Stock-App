@@ -48,6 +48,7 @@
 
         [HttpPost]
         [CustomAuthorize(Roles = "Admin,Moderator,User")]
+        [ValidateAntiForgeryToken]
         [Route("addEntry")]
         public ActionResult AddEntry([Bind(Include = "EntryType,WhId,Amount")] EntryAddBindingModel model)
         {
